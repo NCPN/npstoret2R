@@ -25,6 +25,7 @@ Load packages, functions and NPSTORET data into global (working) environment
 \tabular{llllllll}{
   \tab 0.1   \tab\tab 2014-09-30  \tab\tab BLC   \tab\tab Initial version \cr
   \tab 0.2   \tab\tab 2014-11-08  \tab\tab BLC   \tab\tab Documentation update, removed unused siny, reshape2, & stringr package calls \cr
+  \tab 0.3   \tab\tab 2014-11-12  \tab\tab BLC   \tab\tab Revise SQL paths to sqlPath \cr
   }
 }
 

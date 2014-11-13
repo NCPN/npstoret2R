@@ -227,7 +227,7 @@ getParkData <- function(df, parkAbbrev){
 #' @section Requirements:
 #' r Libraries:
 #' \itemize{
-#'  \item \code{\link[RODBC]}
+#'  \item \code{\link[RODBC]{RODBC}}
 #' }
 #'   
 #' @examples

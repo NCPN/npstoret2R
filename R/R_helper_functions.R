@@ -22,7 +22,7 @@
 #' 
 #' @examples
 #' # Test for the dplyr package and install it if necessary.
-#' pkgTest("dplyr")
+#' \dontrun{pkgTest("dplyr")}
 #'
 #' @section Sources:
 #'  \tabular{ll}{
@@ -36,6 +36,8 @@
 #'  \tabular{llllllll}{
 #'    0.1   \tab \tab 2014-05-05 \tab \tab BLC  \tab \tab Initial version \cr
 #'    0.2   \tab \tab 2014-06-26 \tab \tab BLC  \tab \tab Added cleanup \cr
+#'    0.3   \tab \tab 2014-11-13 \tab \tab BLC  \tab \tab Documentation update \cr
+
 #'  }
 #' @family helper functions
 #' @export

@@ -1202,7 +1202,7 @@ getFormulaUsed <- function(dependency,params){
 #'
 #' @section Requirements:
 #' \itemize{
-#'  \item \code{\link[RODBC]}
+#'  \item \code{\link[RODBC]{RODBC}}
 #'  \item \code{\link[sqldf]{sqldf}}
 #' }
 #'
@@ -1213,6 +1213,7 @@ getFormulaUsed <- function(dependency,params){
 #'   \tabular{llllllll}{
 #'   \tab 2014-05-21 \tab\tab B. Campbell \tab\tab 0.1 \tab\tab Initial version \cr
 #'   \tab 2014-06-05 \tab\tab B. Campbell \tab\tab 0.2 \tab\tab Adjusted to mirror NPSTORET calculations \cr
+#'   \tab 2014-11-13 \tab\tab B. Campbell \tab\tab 0.3 \tab\tab Documentation update \cr
 #'   }
 #' @family WQ Standards functions
 #' @export

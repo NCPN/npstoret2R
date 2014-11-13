@@ -90,17 +90,18 @@ AddResultColumns <- function (results){
 
 
 # ----------------------------------------------------------------------
-#' @title lookupDependentCharResult
+#' @title lookupDependentCharResult2
 #' @description Lookup dependent characteristic result value (pH, H20 temp, hardness)
 #'
-#' @param depChar   - NPSTORET dependent characteristic value (pH, Temp, Hardness)
-#' @param park      - NPSTORET Park
-#' @param stationID - NPSTORET StationID
-#' @param startDate - NPSTORET visit StartDate
-#' @param smpl_frac - NPSTORET sample fraction type name
-#' @param medium    - NPSTORET measurement medium (MEDIUM)
-#' @param field_lab - NPSTORET field or lab mesurement (FIELD_LAB)
-#' @param uom       - NPSTORET unit of measure (UOM)#'
+#' @param depChar       - NPSTORET dependent characteristic value (pH, Temp, Hardness)
+#' @param park          - NPSTORET Park
+#' @param stationID     - NPSTORET StationID
+#' @param startDate     - NPSTORET visit StartDate
+#' @param startTimeZone - NPSTORET visit StartTimeZone
+#' @param smpl_frac     - NPSTORET sample fraction type name
+#' @param medium        - NPSTORET measurement medium (MEDIUM)
+#' @param field_lab     - NPSTORET field or lab mesurement (FIELD_LAB)
+#' @param uom           - NPSTORET unit of measure (UOM)#'
 #'
 #' @return resultVal - results value for the matched characteristic
 #'
@@ -124,17 +125,18 @@ AddResultColumns <- function (results){
 #' @section Adapted:
 #'   -
 #' @section Revisions:
-#'   \tabular{lllllllll}{
+#'   \tabular{llllllll}{
 #'   \tab 0.1   \tab\tab 2014-07-02    \tab\tab BLC   \tab\tab Initial version \cr
 #'   \tab 0.2   \tab\tab 2014-09-11    \tab\tab BLC   \tab\tab Fixed match to return proper result value
 #'                             Replaced length with nrow to get proper # of rows (vs. df width/cols)
-#'                             Replaced == with %in% for comparisons \cr
+#'                             Replaced == with \%in\% for comparisons \cr
 #'   \tab 0.3   \tab\tab 2014-09-25    \tab\tab BLC   \tab\tab Park, sample fraction type name added to parameters \cr
+#'   \tab 0.4   \tab\tab 2014-09-25    \tab\tab BLC   \tab\tab Documentation update \cr
 #'   }
 #' @family WQ Results functions
 #' @export
 # ----------------------------------------------------------------------
-lookupDependentCharResult <- function(depChar, park, stationID, startDate, startTimeZone, smpl_frac, medium, field_lab, uom){
+lookupDependentCharResult2 <- function(depChar, park, stationID, startDate, startTimeZone, smpl_frac, medium, field_lab, uom){
   
   # default value
   #depCharResult = ""

@@ -44,7 +44,7 @@ Load NPSTORET data & populate data frame
 
 r Libraries:
 \itemize{
- \item \code{\link[RODBC]}
+ \item \code{\link[RODBC]{RODBC}}
 }
 }
 
@@ -92,6 +92,7 @@ r Libraries:
   \tab 0.8   \tab\tab 2014-10-05  \tab\tab BLC  \tab\tab Updated directory location for package \cr
   \tab 0.9   \tab\tab 2014-10-13  \tab\tab BLC  \tab\tab Revised connection to app[["connection"]] vs internal connection \cr
   \tab 0.10   \tab\tab 2014-11-11  \tab\tab BLC  \tab\tab Documentation updated & removed odbcClose to leave connection available \cr
+  \tab 0.11   \tab\tab 2014-11-12  \tab\tab BLC   \tab\tab Revise SQL paths to sqlPath \cr
   }
 }
 \examples{
