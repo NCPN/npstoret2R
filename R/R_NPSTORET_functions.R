@@ -43,6 +43,7 @@
 #'   \tab 0.6   \tab\tab 2014-10-09  \tab\tab BLC  \tab\tab Documentation update \cr
 #'   \tab 0.7   \tab\tab 2014-10-13  \tab\tab BLC  \tab\tab Revised connection to app[["connection"]] vs internal connection \cr
 #'   \tab 0.8   \tab\tab 2014-11-11  \tab\tab BLC  \tab\tab Updated documentation & removed odbcClose \cr
+#'   \tab 0.9   \tab\tab 2014-11-12  \tab\tab BLC   \tab\tab Revise SQL paths to sqlPath \cr
 #'   }
 #' @family NPSTORET functions
 #' @export
@@ -51,7 +52,7 @@ loadNPSTORETData <- function(){
   
   # ----------SQL---------------
   # read in SQL query
-  filePath = paste(getwd(),"/doc/SQLquery_NPSTORET.txt",sep="")
+  filePath = paste(sqlPath,"SQLquery_NPSTORET.txt",sep="")
   fileSQL<-file(filePath,"rt")            
   sqlString<-readLines(fileSQL)           
   sqlString<-paste(sqlString,collapse="","") 
@@ -284,6 +285,7 @@ getParkData <- function(df, parkAbbrev){
 #'   \tab 0.8   \tab\tab 2014-10-05  \tab\tab BLC  \tab\tab Updated directory location for package \cr
 #'   \tab 0.9   \tab\tab 2014-10-13  \tab\tab BLC  \tab\tab Revised connection to app[["connection"]] vs internal connection \cr
 #'   \tab 0.10   \tab\tab 2014-11-11  \tab\tab BLC  \tab\tab Documentation updated & removed odbcClose to leave connection available \cr
+#'   \tab 0.11   \tab\tab 2014-11-12  \tab\tab BLC   \tab\tab Revise SQL paths to sqlPath \cr
 #'   }
 #' @family NPSTORET functions
 #' @export
@@ -348,7 +350,7 @@ loadNPSTORETWQData <- function(datatype="Results", filter=""){
     
   # ----------SQL---------------
   # read in SQL query
-  filePath = paste(getwd(),"/doc/",fileName,sep="")
+  filePath = paste(sqlPath,fileName,sep="")
   fileSQL<-file(filePath,"rt")            
   sqlString<-readLines(fileSQL)
   
