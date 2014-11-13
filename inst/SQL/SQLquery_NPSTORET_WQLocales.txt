@@ -1,0 +1,40 @@
+SELECT 
+	tblLocations.LocSTATN_IS_NUMBER,
+	tblLocations.LocSTATN_ORG_ID,
+	tblLocations.StationID,
+	tblLocations.[Station Name],
+	tblLocations.[Primary Type],
+	tblLocations.State,
+	tblLocations.County,
+	lsg.ID_CODE AS Park,
+	lsg.NAME,
+	s.StandardID,
+	s.StandardName,
+	s.DESCRIPTION_TEXT
+
+FROM tblLocations, 
+tblLocationStationGroupAssignment lga, 
+tblLocationStationGroups lsg,
+tblLocationProjectAssignment lpa,
+tblProjects p,
+tblLocationWQStandardAssignment sa,
+tblWQStandards s
+	
+
+WHERE lga.LocStatn_IS_NUMBER = tblLocations.LocStatn_IS_NUMBER 
+	AND lga.LocStatn_ORG_ID = tblLocations.LocStatn_ORG_ID
+AND
+	 lsg.LocStatnGrp_IS_NUMBER = lga.LocStatn_IS_NUMBER 
+	AND lsg.LocStatnGrp_ORG_ID = lga.LocStatn_ORG_ID
+
+	AND lpa.LocStatn_IS_NUMBER = tblLocations.LocStatn_IS_NUMBER 
+	AND lpa.LocStatn_ORG_ID = tblLocations.LocStatn_ORG_ID
+
+AND p.LocProj_IS_NUMBER = lpa.LocProj_IS_NUMBER 
+	AND p.LocProj_ORG_ID = lpa.LocProj_ORG_ID
+
+	AND sa.LocStatn_IS_NUMBER = tblLocations.LocStatn_IS_NUMBER 
+	AND sa.LocStatn_ORG_ID = tblLocations.LocStatn_ORG_ID
+
+AND s.Standard_IS_NUMBER = sa.Standard_IS_NUMBER 
+	AND s.Standard_ORG_ID = sa.Standard_ORG_ID;

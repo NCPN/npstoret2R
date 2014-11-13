@@ -1,0 +1,55 @@
+SELECT
+ 	tblLocationStationGroups.ID_CODE, 
+	tblLocationStationGroups.NAME, 
+	tblLocationStationGroups.DESCRIPTION_TEXT, 
+	wqs.Standard_IS_NUMBER, 
+	wqs.Standard_Org_ID, 
+	wqs.OWNER_TYPE_CODE, 
+	wqs.StandardID, 
+	wqs.StandardName, 
+	wqs.DESCRIPTION_TEXT, 
+	wqs.COMP_IND_CD, 
+	wqs.D_USERID_CREATOR, 
+	wqs.D_USERID_CODE, 
+	wqs.D_LAST_UPDATE_TS, 
+	tblProjects.ProjectID, 
+	tblProjects.ProjectName, 
+	tblLocations.StationID, 
+	tblLocations.[Station Name], 
+	tblLocations.[Primary Type], 
+	tblLocations.County, 
+	tblLocations.State
+FROM (
+	tblProjects 
+	INNER JOIN (((
+		tblWQStandards AS wqs 
+	INNER JOIN (
+		tblLocations 
+	INNER JOIN 
+		tblLocationWQStandardAssignment 
+		ON (tblLocations.LocSTATN_ORG_ID = tblLocationWQStandardAssignment.LocStatn_ORG_ID) 
+		AND (tblLocations.LocSTATN_IS_NUMBER = tblLocationWQStandardAssignment.LocStatn_IS_NUMBER) 
+		AND (tblLocations.LocSTATN_IS_NUMBER = tblLocationWQStandardAssignment.LocStatn_IS_NUMBER) 
+		AND (tblLocations.LocSTATN_ORG_ID = tblLocationWQStandardAssignment.LocStatn_ORG_ID) 
+		AND (tblLocations.LocSTATN_IS_NUMBER = tblLocationWQStandardAssignment.LocStatn_IS_NUMBER) 
+		AND (tblLocations.LocSTATN_IS_NUMBER = tblLocationWQStandardAssignment.LocStatn_IS_NUMBER)) 
+		ON (wqs.Standard_Org_ID = tblLocationWQStandardAssignment.Standard_Org_ID) 
+		AND (wqs.Standard_IS_NUMBER = tblLocationWQStandardAssignment.Standard_IS_NUMBER)) 
+	INNER JOIN (tblCharacteristics 
+	INNER JOIN tblWQStandardCriteria AS wqsc 
+		ON (tblCharacteristics.TSRUOM_IS_NUMBER = wqsc.TSRUOM_IS_NUMBER)
+		AND (tblCharacteristics.MEDIUM = wqsc.Medium) 
+		AND (tblCharacteristics.TSRUOM_IS_NUMBER = wqsc.TSRUOM_IS_NUMBER) 		AND (tblCharacteristics.TSRCHAR_IS_NUMBER = wqsc.TSRCHAR_IS_NUMBER)) 
+		ON (wqs.Standard_Org_ID = wqsc.Standard_Org_ID) 
+		AND (wqs.Standard_IS_NUMBER = wqsc.Standard_IS_NUMBER)) 
+	INNER JOIN tblLocationProjectAssignment 
+		ON (tblLocations.LocSTATN_ORG_ID = tblLocationProjectAssignment.LocSTATN_ORG_ID) 
+		AND (tblLocations.LocSTATN_IS_NUMBER = tblLocationProjectAssignment.LocSTATN_IS_NUMBER)) 
+		ON (tblProjects.LocProj_ORG_ID = tblLocationProjectAssignment.LocProj_ORG_ID) 
+		AND (tblProjects.LocProj_IS_NUMBER = tblLocationProjectAssignment.LocProj_IS_NUMBER)) 
+	INNER JOIN (tblLocationStationGroups 
+	INNER JOIN tblLocationStationGroupAssignment 
+		ON (tblLocationStationGroups.LocStatnGRP_ORG_ID = tblLocationStationGroupAssignment.LocStatnGrp_ORG_ID) 
+		AND (tblLocationStationGroups.LocStatnGRP_IS_NUMBER = tblLocationStationGroupAssignment.LocStatnGrp_IS_NUMBER)) 
+		ON (tblLocations.LocSTATN_ORG_ID = tblLocationStationGroupAssignment.LocStatn_ORG_ID) 
+		AND (tblLocations.LocSTATN_IS_NUMBER = tblLocationStationGroupAssignment.LocStatn_IS_NUMBER);

@@ -1,0 +1,26 @@
+npstoret2R 0.0.0.9001
+===================
+
+DEVELOPMENT INCREMENTAL RELEASE
+
+* adds code vignettes for examples
+
+* Cleans up documentation
+
+npstoret2R 0.0.0.9000
+===================
+
+INITIAL RELEASE
+
+* enables pulling of NPSTORET data into R for results and standards (characteristics)
+
+* finds dependent characteristics of dependent standards and calculates standard for 
+  result comparison
+
+* compares results to standard values and assesses result compliance to standard
+  (+1 = above standard, 0 = standard, -1 = below standard)
+
+* new classes for sample, standards(independent & dependent)
+  used to enable object creation and storage of data
+
+* incorporated water quality NPSTORET import

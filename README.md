@@ -1,4 +1,4 @@
 npstoret2R
 ==========
 
-NPSTORET import to R
+NPSTORET to R importing

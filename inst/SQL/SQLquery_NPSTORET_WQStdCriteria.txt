@@ -1,0 +1,35 @@
+SELECT
+	lsg.ID_CODE,
+	lsg.NAME,
+	lsg.DESCRIPTION_TEXT,
+	wqs.Standard_IS_NUMBER,
+	wqs.Standard_Org_ID,
+	wqs.OWNER_TYPE_CODE,
+	wqs.StandardID,
+	wqs.StandardName,
+	wqs.DESCRIPTION_TEXT,
+	wqs.COMP_IND_CD,
+	wqs.D_USERID_CREATOR,
+	wqs.D_USERID_CODE,
+	wqs.D_LAST_UPDATE_TS
+FROM
+	tblWQStandards AS wqs
+JOIN
+	tblLocationStationGroups lsg ON lsg.LocStatnGRP_IS_NUMBER = lsga.LocStatnGrpAss_IS_NUMBER AND lsg.LocStatnGRP_ORG_ID = lsga.LocStatnGrpAss_ORG_ID
+
+JOIN
+	tblLocationStationGroupAssignment lsga ON lsga.LocStatnGrpAss_IS_NUMBER = l.LocSTATN_IS_NUMBER AND
+lsga.LocStatnGrpAss_ORG_ID = l.LocSTATN_ORG_ID
+
+JOIN
+	tblLocations l ON l.LocSTATN_IS_NUMBER = lwqsa.LocStatn_IS_NUMBER AND l.LocSTATN_ORG_ID = lwqsa.LocStatn_ORG_ID
+JOIN
+	tblLocationWQStandardAssignment lwqsa ON wqs.Standard_IS_NUMBER = lwqsa.Standard_IS_NUMBER AND wqs.Standard_Org_ID = lwqsa.Standard_Org_ID
+JOIN
+	tblWQStandardCriteria wqsc ON wqsc.Standard_IS_NUMBER = wqs.Standard_IS_NUMBER AND  wqsc.Standard_Org_ID = wqs.Standard_Org_ID
+
+JOIN 
+	tblCharacteristics c ON c.LocCHDEF_ORG_ID = wqsc.StdChar_Org_ID AND c.TSRCHAR_IS_NUMBER = wqsc.TSRCHAR_IS_NUMBER AND c.TSRUOM_IS_NUMBER = wqsc.TSRUOM_IS_NUMBER AND c.MEDIUM = wqsc.Medium
+
+WHERE
+	StandardID = '%s';

@@ -1,0 +1,73 @@
+#' @title Import NPSTORET data into R with npstoret2R!
+#'
+#'
+#' @description
+#' \bold{ CONNECT, IMPORT, & ANALYZE }
+#' 
+#' It's best if you're working from a local copy of your
+#' NPSTORET database. You'll first connect to the database
+#' then pull in your sample data using either \code{\link{loadNPSTORETData}} or
+#' \code{\link{loadNPSTORETWQData}} which enables you to
+#' import sampling results, characteristics (WQ standards),
+#' and other NPSTORET data. Sampling 'results' include
+#' attributes that enable npstoret2R to compare
+#' sample values to appropriate water quality standards.
+#' 
+#' \bold{ WATER QUALITY STANDARDS }
+#' 
+#' Water quality standards depend on the park, project,
+#' and sample type. They vary by locale and the
+#' ecological/legal agreements for the various samples
+#' and measurements collected. 
+#' 
+#' \bold{ INDEPENDENT STANDARDS }
+#' 
+#' Some characteristics have set standard values which
+#' do not vary. These 'independent' standards are contained
+#' within NPSTORET.
+#' 
+#' \bold{ DEPENDENT STANDARDS }
+#' 
+#' Other characteristics depend on other factors. These 'dependent'
+#' water quality standards depend not only on the location (park, project), 
+#' but also on other water quality sample values obtained on the same visit.
+#' These related characteristics include pH, hardness (Ca+Mg), temperature, and time.
+#' So for some samples (ex: Cu, Cd, Mn), the standard must be
+#' calculated based on the values of these dependent characteristics.
+#' 
+#' npstoret2R calculates dependent standards based on the values for 
+#' those dependencies for the visit and the formulas and coefficients 
+#' identified within NPSTORET.**
+#' 
+#' \bold{ COMPLIANCE COMPARISON }
+#' 
+#' With both dependent (calculated) standards and 'independent' 
+#' water quality standards, npstoret2R compares these to 
+#' sampling results to identify which results are not compliant.
+#' 
+#' Compliance is reported as +1, 0, or -1 based on whether the 
+#' result is above, at, or below the water quality standard (either
+#' calculated/dependent or independent).
+#' 
+#' \bold{ A TOOL, NOT A REPLACEMENT }
+#' 
+#' Of course, npstoret2R is only a tool. 
+#' 
+#' It does not replace the intelligence or expertise of the ecologist, 
+#' limnologist, or water quality specialist assessing water 
+#' quality compliance to standards. 
+#' 
+#' Clearly the values it provides should be reviewed and assessed 
+#' for accuracy. This is particilarly true for early versions of the 
+#' tool. There is no substitute for the clear thinking of the 
+#' well-trained scientific mind. No program, however excellent it may 
+#' be, can substitute for good judgement and thoughtful, thorough analysis.
+#' 
+#'  NOTE:
+#'    ** Standards that are time dependent are currently omitted from 
+#'    calculation.
+#'
+#'
+#' @docType package
+#' @name npstoret2R
+NULL

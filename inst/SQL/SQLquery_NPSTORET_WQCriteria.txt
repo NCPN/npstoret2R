@@ -1,0 +1,44 @@
+SELECT DISTINCT 
+	tblWQStandardCriteria.StdChar_IS_NUMBER, 
+	tblWQStandardCriteria.StdChar_Org_ID, 
+	tblWQStandardCriteria.Standard_IS_NUMBER, 
+	tblWQStandardCriteria.Standard_Org_ID, 
+	tblWQStandardCriteria.TSRCHAR_IS_NUMBER, 
+	tblWQStandardCriteria.DISPLAY_NAME, 
+	tblWQStandardCriteria.Medium, 
+	tblWQStandardCriteria.StandardValue, 
+	tblWQStandardCriteria.LoCheck, 
+	tblWQStandardCriteria.TSRUOM_IS_NUMBER, 
+	tblWQStandardCriteria.DUR_BASIS_TYPE_NM, 
+	tblWQStandardCriteria.SMPL_FRAC_TYPE_NM, 
+	tblWQStandardCriteria.STATISTIC_TYPE_NM, 
+	tblWQStandardCriteria.NumSamples, 
+	tblWQStandardCriteria.SampleInterval, 
+	tblWQStandardCriteria.IsDependent, 
+	tblWQStandardCriteria.CharDependent, 
+	tblWQStandardCriteria.Coefficient1, 
+	tblWQStandardCriteria.Coefficient2, 
+	tblWQStandardCriteria.Coefficient3, 
+	tblWQStandardCriteria.Coefficient4, 
+	tblWQStandardCriteria.Coefficient5, 
+	tblWQStandardCriteria.Coefficient6, 
+	tblWQStandardCriteria.Coefficient7, 
+	tblWQStandardCriteria.Coefficient8, 
+	tblWQStandardCriteria.Comment, 
+	tblWQStandardCriteria.COMP_IND_CD, 
+	tblWQStandardCriteria.D_USERID_CREATOR, 
+	tblWQStandardCriteria.D_USERID_CODE, 
+	tblWQStandardCriteria.D_LAST_UPDATE_TS,
+
+IIF (tblWQStandardCriteria.TSRUOM_IS_NUMBER > 0, 
+(SELECT TRIM(tblDef_TSRUOM.SHORT_FORM_NAME) FROM tblDef_TSRUOM 
+WHERE tblDef_TSRUOM.TSRUOM_IS_NUMBER = tblWQStandardCriteria.TSRUOM_IS_NUMBER) 
+, '')
+ AS UNITS
+
+FROM tblWQStandardCriteria
+LEFT JOIN tblCharacteristics ON tblCharacteristics.MEDIUM = tblWQStandardCriteria.Medium
+AND tblCharacteristics.TSRCHAR_IS_NUMBER = tblWQStandardCriteria.TSRCHAR_IS_NUMBER
+AND tblCharacteristics.TSRUOM_IS_NUMBER = tblWQStandardCriteria.TSRUOM_IS_NUMBER
+AND tblCharacteristics.LocCHDEF_ORG_ID = tblWQStandardCriteria.StdChar_Org_ID
+

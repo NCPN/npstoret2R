@@ -1,0 +1,15 @@
+SELECT
+	Standard_IS_NUMBER,
+	Standard_Org_ID,
+	OWNER_TYPE_CODE,
+	StandardID,
+	StandardName,
+	DESCRIPTION_TEXT,
+	COMP_IND_CD,
+	D_USERID_CREATOR,
+	D_USERID_CODE,
+	D_LAST_UPDATE_TS
+FROM
+	tblWQStandards
+WHERE
+	StandardID = '%s';

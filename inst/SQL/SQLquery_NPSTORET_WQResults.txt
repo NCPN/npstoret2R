@@ -1,0 +1,105 @@
+SELECT 
+	tblVisits.LocStVst_IS_NUMBER, 
+	tblOrganizations.Name AS OrgName, 
+	tblVisits.LocProj_IS_NUMBER, 
+	tblProjects.ProjectID, 
+	tblProjects.ProjectName, 
+	tblVisits.LocSTATN_IS_NUMBER, 
+	tblLocations.StationID,
+	tblLocations.[Station Name], 
+	tblVisits.Visit_Number, 
+	tblVisits.START_DATE, 
+	tblVisits.START_TIME, 
+	tblVisits.START_TIME_ZONE, 
+	tblVisits.END_DATE, 
+	tblVisits.END_TIME, 
+	tblVisits.END_TIME_ZONE, 
+	tblVisits.VISIT_COMMENT, 
+	tblResults.LocFdAct_IS_NUMBER, 
+	tblActivities.ID_CODE, 
+	tblActivities.DEPTH_TO_ACTIVITY, 
+	tblActivities.DEPTH_TO_ACT_UN_CD, 
+	tblActivities.RELTV_DEPTH_NAME,  
+	tblActivities.REPLICATE_NUM, 	
+	tblActivities.ACTIVITY_COMMENT, 
+	tblActivities.QAQC_SAMPLE, 
+	tblActivities.CHAIN_OF_CUSTODY_ID, 
+	tblResults.LocChDef_IS_NUMBER, 
+	tblCharacteristics.DISPLAY_NAME, 
+	tblCharacteristics.LocCharNameCode,
+	tblCharacteristics.TSRCHAR_IS_NUMBER, 
+	tblDef_TSRUOM.SHORT_FORM_NAME AS UOM, 
+	tblCharacteristics.SMPL_FRAC_TYPE_NM, 
+	tblCharacteristics.FIELD_LAB, 
+	tblCharacteristics.MEDIUM, 
+	tblCharacteristics.DUR_BASIS_TYPE_NM, 
+	tblCharacteristics.WT_BASIS_TYPE_NM, 
+	tblCharacteristics.TEMP_BASIS_LVL_NM, 
+	tblCharacteristics.PARTICLE_SIZE_BASIS, 
+	tblCharacteristics.SMPL_FRAC_TYPE_NM,
+	tblResults.LocChDef_IS_NUMBER,
+	tblResults.LocChDef_Org_ID, 
+	tblResults.LocRSULT_IS_NUMBER, 
+	tblResults.DETECTION_CONDITION, 
+	tblResults.RESULT_TEXT, 
+	tblResults.VALUE_STATUS, 
+	tblResults.VALUE_TYPE, 
+	tblResults.STATISTIC_TYPE_NM, 
+	tblResults.LAB_REMARKS, 
+	tblResults.RESULT_COMMENT, 
+	tblResults.DETECTION_LIMIT, 
+	tblResults.LOWER_QUANT_LIMIT, 
+	tblResults.UPPER_QUANT_LIMIT, 
+	tblResults.DET_QUANT_DESCRIPTION, 
+	tblResults.PRECISION, 
+	tblResults.CONFIDENCE_LEVEL, 
+	tblResults.BIAS, 
+	tblResults.BIAS_CORRECTED, 
+	tblResults.REPL_ANALYSIS_NUM, 
+	tblResults.Dilution_Ind_Code, 
+	tblResults.Recovery_Ind_Code, 
+	tblResults.Correction_Ind_Code, 
+	tblResults.Analysis_Date, 
+	tblResults.Analysis_Time, 
+	tblResults.Analysis_Time_Zone,
+	tblLocationStationGroups.LocStatnGRP_ORG_ID, 
+	tblLocationStationGroups.ID_CODE AS Park, 
+	tblLocationStationGroups.NAME AS ParkName
+FROM 
+  ((tblProjects 
+	INNER JOIN (
+	  tblOrganizations 
+	    INNER JOIN (
+              tblLocations 
+		INNER JOIN 
+		  tblVisits 
+	            ON (tblLocations.LocSTATN_ORG_ID = tblVisits.LocSTATN_ORG_ID) 
+		    AND (tblLocations.LocSTATN_IS_NUMBER = tblVisits.LocSTATN_IS_NUMBER)) 
+                  ON tblOrganizations.Org_ID = tblVisits.LocStVst_ORG_ID) 
+             ON (tblProjects.LocProj_ORG_ID = tblVisits.LocProj_ORG_ID) 
+             AND (tblProjects.LocProj_IS_NUMBER = tblVisits.LocProj_IS_NUMBER)) 
+         INNER JOIN ((((((tblCharacteristics 
+           LEFT JOIN tblAnalyticalProcedures 
+             ON (tblCharacteristics.LocANLPR_IS_NUMBER = tblAnalyticalProcedures.LocANLPR_IS_NUMBER) 
+             AND (tblCharacteristics.LocANLPR_ORG_ID = tblAnalyticalProcedures.LocANLPR_ORG_ID)) 
+           LEFT JOIN tblFieldProcedures 
+             ON (tblCharacteristics.LocFLDPR_IS_NUMBER = tblFieldProcedures.LocFLDPR_IS_NUMBER) 
+             AND (tblCharacteristics.LocFLDPR_ORG_ID = tblFieldProcedures.LocFLDPR_Org_ID)) 
+) 
+) 
+           LEFT JOIN tblDef_TSRUOM ON tblCharacteristics.TSRUOM_IS_NUMBER = tblDef_TSRUOM.TSRUOM_IS_NUMBER) 
+          INNER JOIN ((tblActivities INNER JOIN tblDef_ActivityTypes 
+             ON tblActivities.ACTIVITY_TYPE = tblDef_ActivityTypes.ACTYP_UID) 
+          INNER JOIN tblResults 
+             ON (tblActivities.LocFdAct_ORG_ID = tblResults.LocFdAct_Org_ID) 
+             AND (tblActivities.LocFdAct_IS_NUMBER = tblResults.LocFdAct_IS_NUMBER)) 
+        ON (tblCharacteristics.LocCHDEF_ORG_ID = tblResults.LocChDef_Org_ID) 
+          AND (tblCharacteristics.LocCHDEF_IS_NUMBER = tblResults.LocChDef_IS_NUMBER)) 
+        ON (tblVisits.LocStVst_ORG_ID = tblActivities.LocStVst_ORG_ID) 
+          AND (tblVisits.LocStVst_IS_NUMBER = tblActivities.LocStVst_IS_NUMBER)) 
+        INNER JOIN (tblLocationStationGroups 
+          INNER JOIN tblLocationStationGroupAssignment 
+            ON (tblLocationStationGroups.LocStatnGRP_ORG_ID = tblLocationStationGroupAssignment.LocStatnGrp_ORG_ID) 
+            AND (tblLocationStationGroups.LocStatnGRP_IS_NUMBER = tblLocationStationGroupAssignment.LocStatnGrp_IS_NUMBER)) 
+            ON (tblLocations.LocSTATN_ORG_ID = tblLocationStationGroupAssignment.LocStatn_ORG_ID) 
+            AND (tblLocations.LocSTATN_IS_NUMBER = tblLocationStationGroupAssignment.LocStatn_IS_NUMBER);

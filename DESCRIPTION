@@ -1,0 +1,20 @@
+Package: npstoret2R
+Type: Package
+Title: R Connection into NPSTORET for Water Quality (WQ) Processing
+Version: 0.0.0.9001
+Date: 2014-11-8
+Author: Bonnie Campbell, Assistant Data Manager, NPS Northern Colorado Plateau
+    Network (NCPN)
+Maintainer: Bonnie Campbell <Bonnie_Campbell@nps.gov>
+Description: Enables access to local NPSTORET MS Access water quality data,
+    prepares dependent and independent standard data, and enables comparison of
+    sampling results to WQ standards.
+License: MIT + file LICENSE
+Depends:
+    R (>= 3.1.0)
+Imports:
+    RODBC,
+    sqldf
+Suggests:
+    knitr
+VignetteBuilder: knitr
