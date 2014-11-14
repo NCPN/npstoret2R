@@ -34,7 +34,7 @@
 #' @section Requirements:
 #' R Libraries:
 #' \itemize{
-#'  \item \code{\link[RODBC]{RODBC-package}}
+#'  \item \code{\link[RODBC]{RODBC}}
 #'  \item \code{\link[tools]{tools}}
 #' }
 #'
