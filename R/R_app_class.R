@@ -14,9 +14,9 @@
 #' @title app Class
 #' @details Creates a database object whose connection parameters are contained within the object.
 #'
-#' @param dbfilepathname - database name & directory path
-#' @param username       - database username (for authentication)
-#' @param pwd            - database password (for authentication)
+#' @field dbfilepathname - database name & directory path
+#' @field username       - database username (for authentication)
+#' @field pwd            - database password (for authentication)
 #'
 #' @examples
 #' ## Create the application object (app) and assign the NPSTORET backend filename.
@@ -34,8 +34,8 @@
 #' @section Requirements:
 #' R Libraries:
 #' \itemize{
-#'  \item RODBC
-#'  \item tools
+#'  \item \code{\link[RODBC]{RODBC-package}}
+#'  \item \code{\link[tools]{tools}}
 #' }
 #'
 #' @section Sources:
@@ -45,11 +45,12 @@
 #' @section Revisions:
 #'   \tabular{llllllll}{
 #'   \tab 0.1   \tab\tab 2014-10-05  \tab\tab BLC   \tab\tab Initial version \cr
-#'   \tab 0.1   \tab\tab 2014-11-07  \tab\tab BLC   \tab\tab Documentation update & removed sqlQUeriesFilepath since SQL queries are integrated \cr
+#'   \tab 0.2   \tab\tab 2014-11-07  \tab\tab BLC   \tab\tab Documentation update & removed sqlQUeriesFilepath since SQL queries are integrated \cr
+#'   \tab 0.3   \tab\tab 2014-11-13  \tab\tab BLC   \tab\tab Documentation update \cr
 #'   }
 #'    
 #' @family Application settings
-#' @export
+#' @exportClass app
 # ----------------------------------------------------------------------
 
 app <- list(dbfilepathname="LOCATION OF DATABASE FILE",

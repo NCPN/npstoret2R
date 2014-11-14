@@ -12,25 +12,27 @@
 \usage{
 app
 }
-\arguments{
-\item{dbfilepathname}{- database name & directory path}
-
-\item{username}{- database username (for authentication)}
-
-\item{pwd}{- database password (for authentication)}
-}
 \description{
 app Class
 }
 \details{
 Creates a database object whose connection parameters are contained within the object.
 }
+\section{Fields}{
+
+\describe{
+\item{\code{dbfilepathname}}{- database name & directory path}
+
+\item{\code{username}}{- database username (for authentication)}
+
+\item{\code{pwd}}{- database password (for authentication)}
+}}
 \section{Requirements}{
 
 R Libraries:
 \itemize{
- \item RODBC
- \item tools
+ \item \code{\link[RODBC]{RODBC-package}}
+ \item \code{\link[tools]{tools}}
 }
 }
 
@@ -45,7 +47,8 @@ R Libraries:
 
   \tabular{llllllll}{
   \tab 0.1   \tab\tab 2014-10-05  \tab\tab BLC   \tab\tab Initial version \cr
-  \tab 0.1   \tab\tab 2014-11-07  \tab\tab BLC   \tab\tab Documentation update & removed sqlQUeriesFilepath since SQL queries are integrated \cr
+  \tab 0.2   \tab\tab 2014-11-07  \tab\tab BLC   \tab\tab Documentation update & removed sqlQUeriesFilepath since SQL queries are integrated \cr
+  \tab 0.3   \tab\tab 2014-11-13  \tab\tab BLC   \tab\tab Documentation update \cr
   }
 }
 \examples{
