@@ -783,11 +783,7 @@ calculateStdValues <- function(depChar, depCharValue, depCharValue2, coef1, coef
 #'                 +1 = result above WQ standard
 #'
 #' @section Requirements:
-#'  \tabular{l}{
-#'    RODBC library package loaded \cr
-#'    Working directory set for app \cr
-#'    LoadNPSTORET function \cr
-#' }
+#'  none
 #'
 #' @section Sources:
 #' \tabular{llllllll}{
@@ -798,6 +794,8 @@ calculateStdValues <- function(depChar, depCharValue, depCharValue2, coef1, coef
 #' @section Revisions:
 #' \tabular{llllllll}{
 #'   \tab 0.1   \tab\tab 2014-07-03    \tab\tab BLC   \tab\tab Initial version \cr
+#'   \tab 0.2   \tab\tab 2014-11-16    \tab\tab BLC   \tab\tab Handle resultValues > stdValue (low threshold std) &
+#'                                                         resultValues < stdValue (high threshold std), & Documentation updates \cr
 #'   }
 #' @family WQ Standards functions
 #' @export
@@ -809,17 +807,17 @@ compareToStandards <- function(resultValue, stdValue, loHi){
   switch(as.character(loHi),
          # std = lower limit (threshold)
          "1" = {
-           if(resultValue < stdValue){
+           if((resultValue == stdValue)|(resultValue < stdValue)){
              compliance = -1
-           }else if(resultValue == stdValue){
+           }else if(resultValue > stdValue){
              compliance = 0  
            }
          },
          # std = upper limit (exceedence)
          "0" = {
-           if(resultValue > stdValue){
+           if((resultValue == stdValue)|(resultValue > stdValue)){
              compliance = 1
-           }else if(resultValue == stdValue){
+           }else if(resultValue < stdValue){
              compliance = 0  
            }
          }
@@ -1019,8 +1017,7 @@ getExtendedDepCharResults <- function(){
 #' @return string - formula used to calculate the dependent standard value
 #'
 #' @section Requirements:
-#'   RODBC library package loaded
-#'   Working directory set for app
+#' none
 #'
 #' @section Sources:
 #'   \tabular{llllllll}{
@@ -1029,6 +1026,7 @@ getExtendedDepCharResults <- function(){
 #' @section Revisions:
 #'  \tabular{llllllll}{
 #'   \tab 0.1   \tab\tab 2014-06-26    \tab\tab BLC   \tab\tab Initial version \cr
+#'   \tab 0.2   \tab\tab 2014-11-16    \tab\tab BLC   \tab\tab Update documentation \cr
 #'   }
 #' @family WQ Standards functions
 #' @export

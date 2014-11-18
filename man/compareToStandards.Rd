@@ -25,11 +25,7 @@ Compare results to standard values
 }
 \section{Requirements}{
 
- \tabular{l}{
-   RODBC library package loaded \cr
-   Working directory set for app \cr
-   LoadNPSTORET function \cr
-}
+ none
 }
 
 \section{Sources}{
@@ -48,6 +44,8 @@ Compare results to standard values
 
 \tabular{llllllll}{
   \tab 0.1   \tab\tab 2014-07-03    \tab\tab BLC   \tab\tab Initial version \cr
+  \tab 0.2   \tab\tab 2014-11-16    \tab\tab BLC   \tab\tab Handle resultValues > stdValue (low threshold std) &
+                                                        resultValues < stdValue (high threshold std), & Documentation updates \cr
   }
 }
 \seealso{

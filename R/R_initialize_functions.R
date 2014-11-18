@@ -26,6 +26,7 @@
 #'   \tab 0.1   \tab\tab 2014-09-30  \tab\tab BLC   \tab\tab Initial version \cr
 #'   \tab 0.2   \tab\tab 2014-11-08  \tab\tab BLC   \tab\tab Documentation update, removed unused siny, reshape2, & stringr package calls \cr
 #'   \tab 0.3   \tab\tab 2014-11-12  \tab\tab BLC   \tab\tab Revise SQL paths to sqlPath \cr
+#'   \tab 0.4   \tab\tab 2014-11-17  \tab\tab BLC   \tab\tab Removed script reads of already included package functions \cr
 #'   }
 #'
 #' @usage
@@ -58,39 +59,39 @@ initializeEnvironment <- function(){
   # --- load packages  --- 
   # ----------------------
   # ensure required packages are installed, if not install them
-  pkgTest("tools")
-  pkgTest("RODBC")
-  pkgTest("sqldf")
+#  pkgTest("tools")
+#  pkgTest("RODBC")
+#  pkgTest("sqldf")
   
   # reference packages
-  library(tools)
-  library(RODBC)
-  library(sqldf)
+#  library(tools)
+#  library(RODBC)
+#  library(sqldf)
   
   # ----------------------
   # --- load classes --- 
   # ----------------------
   
   # App Class
-  filePath = paste(getwd(),"/R/R_app_class.R",sep="")
-  source(filePath)
+#  filePath = paste(getwd(),"/R/R_app_class.R",sep="")
+#  source(filePath)
     
   # ----------------------
   # --- load functions --- 
   # ----------------------
   
   # helpers
-  filePath = paste(getwd(),"/R/R_helper_functions.R",sep="")
-  source(filePath)
+#  filePath = paste(getwd(),"/R/R_helper_functions.R",sep="")
+#  source(filePath)
   # NPSTORET
-  filePath = paste(getwd(),"/R/R_NPSTORET_functions.R",sep="")
-  source(filePath)
+#  filePath = paste(getwd(),"/R/R_NPSTORET_functions.R",sep="")
+#  source(filePath)
   # WQ
-  filePath = paste(getwd(),"/R/R_WQstds_functions.R",sep="")
-  source(filePath)
+#  filePath = paste(getwd(),"/R/R_WQstds_functions.R",sep="")
+#  source(filePath)
   # WQ Results
-  filePath = paste(getwd(),"/R/R_WQ_results_functions.R",sep="")
-  source(filePath)  
+#  filePath = paste(getwd(),"/R/R_WQ_results_functions.R",sep="")
+#  source(filePath)  
 }
 
 # ----------------------------------------------------------------------
@@ -118,8 +119,8 @@ initializeEnvironment <- function(){
 #' @section Requirements:
 #' R libraries:
 #'   \itemize{
-#'   \item RODBC
-#'   \item sqldf
+#'   \item \code{\link[RODBC]{RODBC}}
+#'   \item \code{\link[sqldf]{sqldf}}
 #'   }
 #' Valid NPSTORET database app dbfilepathname with required tables \cr
 #'

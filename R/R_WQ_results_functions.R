@@ -13,11 +13,7 @@
 #' @return df - dataframe with columns added
 #'  
 #' @section Requirements:
-#'   \tabular{l}{
-#'   RODBC library package loaded \cr
-#'   Working directory set for app \cr
-#'   LoadNPSTORET function \cr
-#'   }
+#' none
 #'
 #' @section Sources:
 #' \tabular{llllllll}{
@@ -26,6 +22,7 @@
 #' @section Revisions:
 #' \tabular{llllllll}{
 #'   \tab 0.1   \tab\tab 2014-09-25    \tab\tab BLC   \tab\tab Initial version \cr
+#'   \tab 0.2   \tab\tab 2014-11-16    \tab\tab BLC   \tab\tab Documentation update \cr
 #'   }
 #' @family WQ Results functions
 #' @export
@@ -56,7 +53,9 @@ AddResultColumns <- function (results){
   # Std_UOM
   # Std_Medium
   # Std_SMPL_FRAC_TYPE_NM
-  # Std_Compliance +1/0/-1# prepare list
+  # Std_Compliance +1/0/-1
+  
+  # prepare list
   # ----------------------------------------------
   allChars <- list("Std_Value", "Std_LoHi", "Std_UOM", "Std_Medium", 
                    "Std_SMPL_FRAC_TYPE_NM", "Std_Compliance", "Std_Code", "DepCharLookup"

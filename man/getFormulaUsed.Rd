@@ -19,8 +19,7 @@ Fetch the formula used to calculate dependent NPSTORET WQ Standard Values
 }
 \section{Requirements}{
 
-  RODBC library package loaded
-  Working directory set for app
+none
 }
 
 \section{Sources}{
@@ -34,6 +33,7 @@ Fetch the formula used to calculate dependent NPSTORET WQ Standard Values
 
  \tabular{llllllll}{
   \tab 0.1   \tab\tab 2014-06-26    \tab\tab BLC   \tab\tab Initial version \cr
+  \tab 0.2   \tab\tab 2014-11-16    \tab\tab BLC   \tab\tab Update documentation \cr
   }
 }
 \seealso{

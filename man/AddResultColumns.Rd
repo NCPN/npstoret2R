@@ -22,11 +22,7 @@ Adds standards column to result dataframe
 }
 \section{Requirements}{
 
-  \tabular{l}{
-  RODBC library package loaded \cr
-  Working directory set for app \cr
-  LoadNPSTORET function \cr
-  }
+none
 }
 
 \section{Sources}{
@@ -40,6 +36,7 @@ Adds standards column to result dataframe
 
 \tabular{llllllll}{
   \tab 0.1   \tab\tab 2014-09-25    \tab\tab BLC   \tab\tab Initial version \cr
+  \tab 0.2   \tab\tab 2014-11-16    \tab\tab BLC   \tab\tab Documentation update \cr
   }
 }
 \seealso{

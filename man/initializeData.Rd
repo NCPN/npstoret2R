@@ -30,8 +30,8 @@ Load NPSTORET data into global (working) environment
 
 R libraries:
   \itemize{
-  \item RODBC
-  \item sqldf
+  \item \code{\link[RODBC]{RODBC}}
+  \item \code{\link[sqldf]{sqldf}}
   }
 Valid NPSTORET database app dbfilepathname with required tables \cr
 }

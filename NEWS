@@ -1,3 +1,33 @@
+npstoret2R 0.0.0.9004
+===================
+
+DEVELOPMENT INCREMENTAL RELEASE 4
+
+* Continued code cleanup
+
+* Revised app connection class to S4 and renamed to db class
+
+
+npstoret2R 0.0.0.9003
+===================
+
+DEVELOPMENT INCREMENTAL RELEASE 3
+
+* Continued code cleanup
+
+* Updated initializeEnvironment to drop unnecessary script calls
+
+
+npstoret2R 0.0.0.9002
+===================
+
+DEVELOPMENT INCREMENTAL RELEASE 2
+
+* Continued code cleanup & documentation fixes
+
+* Updated SQLquery_NPSTORET for NPSTORET 1.86 removal of TSRBIO_PT table
+
+
 npstoret2R 0.0.0.9001
 ===================
 
