@@ -10,14 +10,16 @@ db Class
 \details{
 Creates a database object whose connection parameters are contained within the object.
 }
-\section{Fields}{
+\section{Slots}{
 
 \describe{
-\item{\code{dbfilepath}}{- database name & directory path}
+\item{\code{dbfile}}{- database name & directory path}
 
 \item{\code{user}}{- database username (for authentication)}
 
 \item{\code{pwd}}{- database password (for authentication)}
+
+\item{\code{connect}}{- database connection}
 }}
 \section{Requirements}{
 
@@ -28,7 +30,7 @@ R Libraries:
 }
 }
 
-\section{Sources}{
+\section{References}{
 
   \tabular{lll}{
   \tab 2004 \tab Friedrich Leisch \cr
@@ -66,5 +68,10 @@ Connect to your database via a DSN-less connection.
 
 npstoret <- connect(npstoret, dbfilepath, user, pwd)
 }
+}
+\seealso{
+Other Application settings: \code{\link{connect}};
+  \code{\link{setDbFile}}; \code{\link{setDbPwd}};
+  \code{\link{setDbUser}}
 }
 
