@@ -1,3 +1,13 @@
+npstoret2R 0.0.0.9006
+===================
+
+DEVELOPMENT INCREMENTAL RELEASE 6
+
+* Continued code cleanup
+
+* Partial fix for S4 db class connect method
+
+
 npstoret2R 0.0.0.9005
 ===================
 

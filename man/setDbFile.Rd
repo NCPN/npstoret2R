@@ -58,7 +58,7 @@ R Libraries:
 }
 \seealso{
 Other Application settings: \code{\link{connect}};
-  \code{\link{db}}, \code{\link{db-class}};
-  \code{\link{setDbPwd}}; \code{\link{setDbUser}}
+  \code{\link{db-class}}; \code{\link{setDbPwd}};
+  \code{\link{setDbUser}}
 }
 

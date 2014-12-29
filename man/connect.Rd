@@ -38,6 +38,8 @@ R Libraries:
   \tab\tab http://stackoverflow.com/questions/23495627/roxygen2-s4-generic-functions-are-not-exported-unless-a-method-is-also-defined \cr
   \tab March 11, 2014 \tab Hadley Wickham \cr
   \tab\tab https://groups.google.com/forum/#!topic/rdevtools/sq3DG0oj058 \cr
+  \tab Dec. 12, 2012 \tab Martin Morgan \cr
+  \tab\tab http://stackoverflow.com/questions/13841400/use-s3-virtual-class-as-slot-of-an-s4-class-got-error-got-class-s4-should-b \cr
   }
 }
 
@@ -52,16 +54,18 @@ R Libraries:
 
   \tabular{llllllll}{
   \tab 0.1   \tab\tab 2014-11-18  \tab\tab BLC   \tab\tab Initial version \cr
+  \tab 0.2   \tab\tab 2014-12-01  \tab\tab BLC   \tab\tab Fixed check file bug (use == not =) \cr
+  \tab 0.3   \tab\tab 2014-12-29  \tab\tab BLC   \tab\tab Updated documentation \cr
   }
 }
 \examples{
 \dontrun{
- connect(mydb, "C:/database/npstoret.accb", "myusername", "mypassword")
+ connect(mydb, dbfilename="C:/database/npstoret.accb", user="myusername", pwd="mypassword")
 }
 }
 \seealso{
-Other Application settings: \code{\link{db}},
-  \code{\link{db-class}}; \code{\link{setDbFile}};
-  \code{\link{setDbPwd}}; \code{\link{setDbUser}}
+Other Application settings: \code{\link{db-class}};
+  \code{\link{setDbFile}}; \code{\link{setDbPwd}};
+  \code{\link{setDbUser}}
 }
 
