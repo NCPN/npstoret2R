@@ -41,6 +41,7 @@ R libraries:
   \tab 0.7   \tab\tab 2014-10-13  \tab\tab BLC  \tab\tab Revised connection to app[["connection"]] vs internal connection \cr
   \tab 0.8   \tab\tab 2014-11-11  \tab\tab BLC  \tab\tab Updated documentation & removed odbcClose \cr
   \tab 0.9   \tab\tab 2014-11-12  \tab\tab BLC   \tab\tab Revise SQL paths to sqlPath \cr
+  \tab 0.10   \tab\tab 2014-12-30  \tab\tab BLC   \tab\tab Update dbConn to use npstoret@connect object connection \cr
   }
 }
 \seealso{

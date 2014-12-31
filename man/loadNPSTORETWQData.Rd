@@ -93,6 +93,7 @@ r Libraries:
   \tab 0.9   \tab\tab 2014-10-13  \tab\tab BLC  \tab\tab Revised connection to app[["connection"]] vs internal connection \cr
   \tab 0.10   \tab\tab 2014-11-11  \tab\tab BLC  \tab\tab Documentation updated & removed odbcClose to leave connection available \cr
   \tab 0.11   \tab\tab 2014-11-12  \tab\tab BLC   \tab\tab Revise SQL paths to sqlPath \cr
+  \tab 0.12   \tab\tab 2014-12-30  \tab\tab BLC   \tab\tab Update dbConn to use npstoret@connect object connection \cr
   }
 }
 \examples{

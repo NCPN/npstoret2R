@@ -27,6 +27,7 @@
 #'   \tab 0.2   \tab\tab 2014-11-08  \tab\tab BLC   \tab\tab Documentation update, removed unused siny, reshape2, & stringr package calls \cr
 #'   \tab 0.3   \tab\tab 2014-11-12  \tab\tab BLC   \tab\tab Revise SQL paths to sqlPath \cr
 #'   \tab 0.4   \tab\tab 2014-11-17  \tab\tab BLC   \tab\tab Removed script reads of already included package functions \cr
+#'   \tab 0.5   \tab\tab 2014-12-30  \tab\tab BLC   \tab\tab Assign sqlPath to global environment to expose for use \cr
 #'   }
 #'
 #' @usage
@@ -44,54 +45,57 @@
 #' @export
 # ----------------------------------------------------------------------
 initializeEnvironment <- function(){
-
+  
   setWindowTitle("NCPN NPSTORET WQ App")
-
+  
   # increase memory limit
   memory.limit(size = 4095)
   
   # ----------------------
   # --- set SQL path   --- 
   # ----------------------
-  sqlPath <- paste(path.package("npstoret2R"),"/SQL/",sep="")
+  #  sqlPath <- paste(path.package("npstoret2R"),"/SQL/",sep="")
+  
+  # assign the path variable to the global environment
+  assign("sqlPath", paste(path.package("npstoret2R"),"/SQL/",sep=""), envir=globalenv())
   
   # ----------------------
   # --- load packages  --- 
   # ----------------------
   # ensure required packages are installed, if not install them
-#  pkgTest("tools")
-#  pkgTest("RODBC")
-#  pkgTest("sqldf")
+  #  pkgTest("tools")
+  #  pkgTest("RODBC")
+  #  pkgTest("sqldf")
   
   # reference packages
-#  library(tools)
-#  library(RODBC)
-#  library(sqldf)
+  #  library(tools)
+  #  library(RODBC)
+  #  library(sqldf)
   
   # ----------------------
   # --- load classes --- 
   # ----------------------
   
   # App Class
-#  filePath = paste(getwd(),"/R/R_app_class.R",sep="")
-#  source(filePath)
-    
+  #  filePath = paste(getwd(),"/R/R_app_class.R",sep="")
+  #  source(filePath)
+  
   # ----------------------
   # --- load functions --- 
   # ----------------------
   
   # helpers
-#  filePath = paste(getwd(),"/R/R_helper_functions.R",sep="")
-#  source(filePath)
+  #  filePath = paste(getwd(),"/R/R_helper_functions.R",sep="")
+  #  source(filePath)
   # NPSTORET
-#  filePath = paste(getwd(),"/R/R_NPSTORET_functions.R",sep="")
-#  source(filePath)
+  #  filePath = paste(getwd(),"/R/R_NPSTORET_functions.R",sep="")
+  #  source(filePath)
   # WQ
-#  filePath = paste(getwd(),"/R/R_WQstds_functions.R",sep="")
-#  source(filePath)
+  #  filePath = paste(getwd(),"/R/R_WQstds_functions.R",sep="")
+  #  source(filePath)
   # WQ Results
-#  filePath = paste(getwd(),"/R/R_WQ_results_functions.R",sep="")
-#  source(filePath)  
+  #  filePath = paste(getwd(),"/R/R_WQ_results_functions.R",sep="")
+  #  source(filePath)  
 }
 
 # ----------------------------------------------------------------------
@@ -132,12 +136,13 @@ initializeEnvironment <- function(){
 #' \tabular{llllllll}{
 #'   \tab 0.1   \tab\tab 2014-10-05  \tab\tab BLC   \tab\tab Initial version \cr
 #'   \tab 0.2   \tab\tab 2014-11-08  \tab\tab BLC   \tab\tab Documentation update \cr
+#'   \tab 0.3   \tab\tab 2014-12-31  \tab\tab BLC   \tab\tab Fix dfRAWstds bug (not dfRAWStds) \cr
 #'   }
 #' @family app initialization functions
 #' @export
 # ----------------------------------------------------------------------
 initializeData <- function(){
-    
+  
   # ------------------------
   #  Fetch NPSTORET Results
   # ------------------------
@@ -152,8 +157,8 @@ initializeData <- function(){
   # ------------------------
   
   # prepare subsets for identifying if results have indep std / dep std / no std
-  dfRAWStds <- getWQRawStdCharacteristics()
-  assign("dfRAWStds", dfRAWStds, envir=.GlobalEnv)
+  dfRAWstds <- getWQRawStdCharacteristics()
+  assign("dfRAWstds", dfRAWstds, envir=.GlobalEnv)
   
   # -------------------------------------------
   #  Get Independent Characteristics
@@ -208,7 +213,7 @@ initializeData <- function(){
   # unique(dfRAWDepChars$DISPLAY_NAME) # 11 stds: Cd, Cu, Pb, Ni, Ag, U, Mn, N, Zn, PCP, Temp
   # unique(depStds$DISPLAY_NAME) # matches dfRAWDepChars
   # unique(depStds$LocCHDEF_IS_NUMBER)
-    
+  
   # ------------------------
   #  Prep Results (add cols)
   # ------------------------
@@ -230,7 +235,7 @@ initializeData <- function(){
   allres$DepCharLookup <- "pH"
   
   assign("allres", allres, envir=.GlobalEnv)
-    
+  
   # subset dfDepCharResults to reduce memory issues
   pH <- dfDepCharResults[dfDepCharResults$DISPLAY_NAME == "pH",] # 14827 / 65
   Temp <- dfDepCharResults[dfDepCharResults$DISPLAY_NAME == "Temperature, water",] # 12111 / 65
@@ -240,7 +245,7 @@ initializeData <- function(){
   assign("pH", pH, envir=.GlobalEnv)
   assign("Temp", Temp, envir=.GlobalEnv)
   assign("Hardness", Hardness, envir=.GlobalEnv)
-
+  
   # Stop clock
   #proc.time() - ptm
   #print(proc.time()-ptm)

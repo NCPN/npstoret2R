@@ -48,6 +48,7 @@ Valid NPSTORET database app dbfilepathname with required tables \cr
 \tabular{llllllll}{
   \tab 0.1   \tab\tab 2014-10-05  \tab\tab BLC   \tab\tab Initial version \cr
   \tab 0.2   \tab\tab 2014-11-08  \tab\tab BLC   \tab\tab Documentation update \cr
+  \tab 0.3   \tab\tab 2014-12-31  \tab\tab BLC   \tab\tab Fix dfRAWstds bug (not dfRAWStds) \cr
   }
 }
 \seealso{

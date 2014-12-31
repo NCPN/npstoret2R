@@ -12,6 +12,7 @@
 # Revisions:  0.1  2014-06-13  B. Campbell  initial version
 #             0.2  2014-09-08  B. Campbell  use droplevels to remove unused levels from dfs
 #             0.3  2014-11-11  B. Campbell  update documentation
+#             0.4  2014-12-31  B. Campbell  fix dfRAWstds bug
 # ==========================================================
 #
 # Process:
@@ -81,6 +82,7 @@
 #'   \tab 0.3   \tab\tab 2014-09-08 \tab\tab   BLC  \tab\tab Drop unused levels \cr
 #'   \tab 0.4   \tab\tab 2014-10-05 \tab\tab   BLC  \tab\tab Add check to ensure dfRAWStds is a data.frame \cr
 #'   \tab 0.5   \tab\tab 2014-11-11 \tab\tab   BLC  \tab\tab Documentation update \cr
+#'   \tab 0.5   \tab\tab 2014-12-31 \tab\tab   BLC  \tab\tab Fix dfRAWstds typo \cr
 #'   }
 #' @family WQ Standards functions
 #' @export
@@ -89,7 +91,7 @@ getWQRawStdCharacteristics <- function(){
   dfRAWstds <- loadNPSTORETWQData("WQProjStnStdCritAlt")
   
   # dataframe check w/ lazy (&&) evaluation (2nd condition evaluates only if 1st is true)
-  if (exists("dfRAWStds") && is.data.frame(get("dfRAWStds"))){  
+  if (exists("dfRAWstds") && is.data.frame(get("dfRAWstds"))){  
     # convert StationID to non-scientific notation
     # add nonsci column
     dfRAWstds$Station_ID <- format(dfRAWstds$StationID, scientific = FALSE)
@@ -146,7 +148,7 @@ getIndepWQStdChars <- function(){
   dfIndepStds <- droplevels(dfIndepStds)
   
   # cleanup
-  cleanUp(c('dfRawstds'), FALSE)
+  cleanUp(c('dfRAWstds'), FALSE)
   
   return(dfIndepStds)
 }
@@ -195,7 +197,7 @@ getRAWDepWQStdChars <- function(){
   dfRAWDepWQStdChars <- droplevels(dfRAWDepWQStdChars)
   
   # cleanup
-  cleanUp(c('dfRawstds'), FALSE)
+  cleanUp(c('dfRAWstds'), FALSE)
   
   return(dfRAWDepWQStdChars)
 }

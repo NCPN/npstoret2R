@@ -44,6 +44,7 @@
 #'   \tab 0.7   \tab\tab 2014-10-13  \tab\tab BLC  \tab\tab Revised connection to app[["connection"]] vs internal connection \cr
 #'   \tab 0.8   \tab\tab 2014-11-11  \tab\tab BLC  \tab\tab Updated documentation & removed odbcClose \cr
 #'   \tab 0.9   \tab\tab 2014-11-12  \tab\tab BLC   \tab\tab Revise SQL paths to sqlPath \cr
+#'   \tab 0.10   \tab\tab 2014-12-30  \tab\tab BLC   \tab\tab Update dbConn to use npstoret@@connect object connection \cr
 #'   }
 #' @family NPSTORET functions
 #' @export
@@ -61,10 +62,11 @@ loadNPSTORETData <- function(){
   #  NPSTORET - altered qryResultsAllOrganizations 
   #             w/o PersonName: FillResponsiblePersonList([tblActivities].[LocFdAct_IS_NUMBER],[tblActivities].[LocFdAct_ORG_ID],False) field
   # -------------------------------------------
-
+  
   # ----------Connect----------
   # connect to the current NPSTORET front end connection via npstoret pkgEnv connection
-  assign("dbConn", npstoret, envir=pkgEnv)
+  #  assign("dbConn", npstoret, envir=pkgEnv)
+  assign("dbConn", npstoret@connect, envir=.GlobalEnv)
   
   #REMEMBER! sqlFetch from a table, sqlQuery a SQL statement!!
   # NOTE: SQLString can have brackets ex: tblLocations.[Station Name] 
@@ -80,7 +82,7 @@ loadNPSTORETData <- function(){
   }
   # drop unused levels (if factors exist)
   df <- droplevels(df)
-
+  
   # cleanup
   cleanUp(c('sqlString','filePath','fileSQL'), FALSE)
   
@@ -136,7 +138,7 @@ loadNPSTORETData <- function(){
 # ----------------------------------------------------------------------
 getFilteredNPSTORETData <- function(df){  
   results <- df[, c("Park", "ParkName", "ProjectID", "ProjectName", "StationID", "Station Name","START_DATE", "QAQC_SAMPLE", "LocCharNameCode","DISPLAY_NAME", "SMPL_FRAC_TYPE_NM", "MEDIUM","DETECTION_CONDITION", "RESULT_TEXT", "UOM", "VALUE_STATUS", "VALUE_TYPE", "DETECTION_LIMIT")]
-
+  
   return(results)
 }
 
@@ -161,7 +163,7 @@ getFilteredNPSTORETData <- function(df){
 #' @export
 # ----------------------------------------------------------------------
 getParksList <- function(df){
-    
+  
   unique(df$Park,incomparables=FALSE)
 }
 
@@ -187,7 +189,7 @@ getParksList <- function(df){
 getParkData <- function(df, parkAbbrev){
   
   subset(df,Park == parkAbbrev)
-
+  
 }
 
 # ----------------------------------------------------------------------
@@ -286,68 +288,69 @@ getParkData <- function(df, parkAbbrev){
 #'   \tab 0.9   \tab\tab 2014-10-13  \tab\tab BLC  \tab\tab Revised connection to app[["connection"]] vs internal connection \cr
 #'   \tab 0.10   \tab\tab 2014-11-11  \tab\tab BLC  \tab\tab Documentation updated & removed odbcClose to leave connection available \cr
 #'   \tab 0.11   \tab\tab 2014-11-12  \tab\tab BLC   \tab\tab Revise SQL paths to sqlPath \cr
+#'   \tab 0.12   \tab\tab 2014-12-30  \tab\tab BLC   \tab\tab Update dbConn to use npstoret@@connect object connection \cr
 #'   }
 #' @family NPSTORET functions
 #' @export
 # ----------------------------------------------------------------------
 loadNPSTORETWQData <- function(datatype="Results", filter=""){  
- 
+  
   # ----------Type to Return---------------
   switch(datatype,
-    # -------------------------------------------
-    #  NPSTORET - altered qryResultsAllOrganizations 
-    #             w/o PersonName: FillResponsiblePersonList([tblActivities].[LocFdAct_IS_NUMBER],[tblActivities].[LocFdAct_ORG_ID],False) field
-    # -------------------------------------------
-    Results = {
-      # WQ Results (all)
-      fileName = "SQLquery_NPSTORET_WQResults.txt"
-    },
-    Characteristics = {
-      # WQ characteristics (all)
-      fileName = "SQLquery_NPSTORET_Characteristics.txt"
-    },
-    WQProjStnStds = {
-      # WQ locations tied to assigned projects & standards (all)
-      fileName ="SQLquery_NPSTORET_WQSP.txt"
-    },
-    WQProjStnStdCrit = {
-      # WQ locations tied to assigned projects, standards, & criteria (all)
-      fileName = "SQLquery_NPSTORET_WQSPC.txt"
-    },
-    WQProjStnStdCritAlt = {
-      # WQ locations tied to assigned projects, standards, & criteria (all)
-      fileName = "SQLquery_NPSTORET_WQProjStnCritStds.txt"
-    },    
-    WQLocales = {
-      # WQ locations tied to assigned projects & standards (all)
-      fileName = "SQLquery_NPSTORET_WQLocales.txt"
-    },
-    WQDepChars = {
-      # WQ dependent characteristics (all)
-      fileName = "SQLquery_NPSTORET_WQResults_DepChars.txt"
-    },
-    WQDepCharsPivot = {
-      # WQ dependent characteristics pivoted to wide format (vs. long)
-      fileName = "SQLquery_NPSTORET_WQResults_DepChars_Pivot.txt"
-    },
-    WQIndepChars = {
-      # WQ standard criteria tied to characteristics
-      fileName = "SQLquery_NPSTORET_WQCriteria.txt"
-    },
-    WQstds = {
-      # WQ standards (filtered by StandardID)
-      fileName = "SQLquery_NPSTORET_WQStandards.txt"
-    },
-    WQstdsFiltered = {
-      # WQ standard criteria (filtered by StandardID)
-      fileName = "SQLquery_NPSTORET_WQStandardsFiltered.txt"
-    },
-    WQCriteria = {
-      # WQ standard criteria (all)
-      fileName = "SQLquery_NPSTORET_WQCriteria.txt"
-    },
+         # -------------------------------------------
+         #  NPSTORET - altered qryResultsAllOrganizations 
+         #             w/o PersonName: FillResponsiblePersonList([tblActivities].[LocFdAct_IS_NUMBER],[tblActivities].[LocFdAct_ORG_ID],False) field
+         # -------------------------------------------
+         Results = {
+           # WQ Results (all)
+           fileName = "SQLquery_NPSTORET_WQResults.txt"
+         },
+         Characteristics = {
+           # WQ characteristics (all)
+           fileName = "SQLquery_NPSTORET_Characteristics.txt"
+         },
+         WQProjStnStds = {
+           # WQ locations tied to assigned projects & standards (all)
+           fileName ="SQLquery_NPSTORET_WQSP.txt"
+         },
+         WQProjStnStdCrit = {
+           # WQ locations tied to assigned projects, standards, & criteria (all)
+           fileName = "SQLquery_NPSTORET_WQSPC.txt"
+         },
+         WQProjStnStdCritAlt = {
+           # WQ locations tied to assigned projects, standards, & criteria (all)
+           fileName = "SQLquery_NPSTORET_WQProjStnCritStds.txt"
+         },    
+         WQLocales = {
+           # WQ locations tied to assigned projects & standards (all)
+           fileName = "SQLquery_NPSTORET_WQLocales.txt"
+         },
+         WQDepChars = {
+           # WQ dependent characteristics (all)
+           fileName = "SQLquery_NPSTORET_WQResults_DepChars.txt"
+         },
+         WQDepCharsPivot = {
+           # WQ dependent characteristics pivoted to wide format (vs. long)
+           fileName = "SQLquery_NPSTORET_WQResults_DepChars_Pivot.txt"
+         },
+         WQIndepChars = {
+           # WQ standard criteria tied to characteristics
+           fileName = "SQLquery_NPSTORET_WQCriteria.txt"
+         },
+         WQstds = {
+           # WQ standards (filtered by StandardID)
+           fileName = "SQLquery_NPSTORET_WQStandards.txt"
+         },
+         WQstdsFiltered = {
+           # WQ standard criteria (filtered by StandardID)
+           fileName = "SQLquery_NPSTORET_WQStandardsFiltered.txt"
+         },
+         WQCriteria = {
+           # WQ standard criteria (all)
+           fileName = "SQLquery_NPSTORET_WQCriteria.txt"
+         },
   )
-    
+  
   # ----------SQL---------------
   # read in SQL query
   filePath = paste(sqlPath,fileName,sep="")
@@ -368,15 +371,15 @@ loadNPSTORETWQData <- function(datatype="Results", filter=""){
   
   # ----------Connect----------
   # connect to the current NPSTORET front end connection
-  assign("dbConn", pkgEnv$npstoret$connect, envir=.GlobalEnv)
-
-
+  #assign("dbConn", pkgEnv$npstoret$connect, envir=.GlobalEnv)
+  assign("dbConn", npstoret@connect, envir=.GlobalEnv)
+  
   #REMEMBER! sqlFetch from a table, sqlQuery a SQL statement!!
   # NOTE: SQLString can have brackets ex: tblLocations.[Station Name] 
   #       To reference these columns use "Station Name"
   #       Brackets enable column name to have a space
   df <- sqlQuery(dbConn, sqlString, errors = TRUE, rows_at_time=100, stringsAsFactors = FALSE)
-    
+  
   # cleanup
   cleanUp(c('sqlString','datatype','filter', 'filePath','fileSQL'), FALSE)
   
