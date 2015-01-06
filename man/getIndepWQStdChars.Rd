@@ -31,6 +31,7 @@ Fetch ALL NPSTORET WQ Standard Characteristics for Independent (Uncalculated) St
                             factorization of df strings & subsequent
                             limitation of df values & fix df names & station \cr
   \tab 0.3   \tab\tab 2014-11-11    \tab\tab BLC   \tab\tab Documentation update, add check for dfRAWstds & remove sqldf depedency \cr
+  \tab 0.4   \tab\tab 2015-01-06    \tab\tab BLC   \tab\tab Fix unused argument (IsDependent=0) error \cr
  }
 }
 \seealso{

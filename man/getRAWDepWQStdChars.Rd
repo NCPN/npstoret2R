@@ -35,6 +35,7 @@ fetch ALL NPSTORET WQ Standard Characteristics for Dependent (Uncalculated) Stan
                             factorization of df strings & subsequent
                             limitation of df values, fix spaces & reordering df \cr
   \tab 0.6   \tab\tab 2014-11-11    \tab\tab BLC   \tab\tab Documentation update, add check for dfRAWStds & remove sqldf depedency \cr
+  \tab 0.7   \tab\tab 2015-01-06    \tab\tab BLC   \tab\tab Fix unused argument (IsDependent=0) error \cr
  }
 }
 \seealso{

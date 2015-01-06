@@ -13,6 +13,7 @@
 #             0.2  2014-09-08  B. Campbell  use droplevels to remove unused levels from dfs
 #             0.3  2014-11-11  B. Campbell  update documentation
 #             0.4  2014-12-31  B. Campbell  fix dfRAWstds bug
+#             0.5  2015-01-06  B. Campbell  fix IsDependent not found error
 # ==========================================================
 #
 # Process:
@@ -129,6 +130,7 @@ getWQRawStdCharacteristics <- function(){
 #'                             factorization of df strings & subsequent
 #'                             limitation of df values & fix df names & station \cr
 #'   \tab 0.3   \tab\tab 2014-11-11    \tab\tab BLC   \tab\tab Documentation update, add check for dfRAWstds & remove sqldf depedency \cr
+#'   \tab 0.4   \tab\tab 2015-01-06    \tab\tab BLC   \tab\tab Fix unused argument (IsDependent=0) error \cr
 #'  }
 #' @family WQ Standards functions
 #' @export
@@ -142,7 +144,8 @@ getIndepWQStdChars <- function(){
   
   # subset only chars
   #       a) Independent Criteria - IsDependent = 0, No DependentCharacteristic
-  dfIndepStds <- dfRAWstds[, IsDependent = 0]
+  #dfIndepStds <- dfRAWstds[, IsDependent = 0]
+  dfIndepStds <- dfRAWstds[dfRAWstds$IsDependent == 0,]
 
   # remove unused levels
   dfIndepStds <- droplevels(dfIndepStds)
@@ -178,6 +181,7 @@ getIndepWQStdChars <- function(){
 #'                             factorization of df strings & subsequent
 #'                             limitation of df values, fix spaces & reordering df \cr
 #'   \tab 0.6   \tab\tab 2014-11-11    \tab\tab BLC   \tab\tab Documentation update, add check for dfRAWStds & remove sqldf depedency \cr
+#'   \tab 0.7   \tab\tab 2015-01-06    \tab\tab BLC   \tab\tab Fix unused argument (IsDependent=0) error \cr
 #'  }
 #' @family WQ Standards functions
 #' @export
@@ -191,8 +195,9 @@ getRAWDepWQStdChars <- function(){
   
   # subset only chars
   #       b) Dependent Criteria - IsDependent = 1, DependentCharacteristic present
-  dfRAWDepWQStdChars <- dfRAWstds[, IsDependent = 1]
-    
+  # dfRAWDepWQStdChars <- dfRAWstds[, IsDependent = 1]
+   dfRAWDepWQStdChars <- dfRAWstds[dfRAWstds$IsDependent == 1,]    
+
   # remove unused levels
   dfRAWDepWQStdChars <- droplevels(dfRAWDepWQStdChars)
   

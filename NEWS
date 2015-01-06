@@ -1,3 +1,15 @@
+npstoret2R 0.0.0.9008
+===================
+
+DEVELOPMENT INCREMENTAL RELEASE 8
+
+* Continued code cleanup
+
+* Fixed dfIndepStds 'IsDependent' not found/unused argument errors
+
+* Fixed getDepCharResult() sqldf could not find function error
+
+
 npstoret2R 0.0.0.9007
 ===================
 
