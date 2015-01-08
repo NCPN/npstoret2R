@@ -36,7 +36,7 @@ R libraries:
   \tab 0.3   \tab\tab 2014-09-08 \tab\tab   BLC  \tab\tab Drop unused levels \cr
   \tab 0.4   \tab\tab 2014-10-05 \tab\tab   BLC  \tab\tab Add check to ensure dfRAWStds is a data.frame \cr
   \tab 0.5   \tab\tab 2014-11-11 \tab\tab   BLC  \tab\tab Documentation update \cr
-  \tab 0.5   \tab\tab 2014-12-31 \tab\tab   BLC  \tab\tab Fix dfRAWstds typo \cr
+  \tab 0.6   \tab\tab 2014-12-31 \tab\tab   BLC  \tab\tab Fix dfRAWstds typo \cr
   }
 }
 \seealso{

@@ -3,11 +3,13 @@
 \alias{lookupDependentCharResult}
 \title{lookupDependentCharResult}
 \usage{
-lookupDependentCharResult(depChar, stationID, startDate, startTimeZone, uom,
-  medium, field_lab)
+lookupDependentCharResult(depChar, park, stationID, startDate, startTimeZone,
+  uom, medium, field_lab)
 }
 \arguments{
 \item{depChar}{- NPSTORET dependent characteristic value (CharDependent)}
+
+\item{park}{- NPSTORET park}
 
 \item{stationID}{- NPSTORET StationID}
 
@@ -56,6 +58,7 @@ none
   \tab\tab\tab\tab\tab\tab\tab Replaced length with nrow to get proper # of rows (vs. df width/cols) \cr
   \tab\tab\tab\tab\tab\tab\tab Replaced == with \%in\% for comparisons \cr
   \tab 0.3   \tab\tab 2014-11-1    \tab\tab BLC   \tab\tab Documentation update \cr
+  \tab 0.4   \tab\tab 2015-01-07    \tab\tab BLC   \tab\tab Add park comparator \cr
    }
 }
 \seealso{
