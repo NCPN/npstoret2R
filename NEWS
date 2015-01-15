@@ -1,3 +1,15 @@
+npstoret2R 0.0.0.9012
+===================
+
+DEVELOPMENT INCREMENTAL RELEASE 12
+
+* Update SQL queries to pull directly from NPSTORET (version 1.86) and definition tables vs linking tables in Access (c:\NPSTORET\LinkTabs\NPSTORET_defTab.mdb)
+
+* Revise Characteristics query to remove NPSTORET fields which no longer exist in tblCharacteristics (TSRCHAR_ORG_ID, TSRBioPt_ORG_ID, TSRSubTax_ORG_ID)
+
+* Update pkgTest() & R_helper_functions documentation
+
+
 npstoret2R 0.0.0.9011
 ===================
 
@@ -106,6 +118,7 @@ DEVELOPMENT INCREMENTAL RELEASE
 * adds code vignettes for examples
 
 * Cleans up documentation
+
 
 npstoret2R 0.0.0.9000
 ===================

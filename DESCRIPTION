@@ -1,7 +1,7 @@
 Package: npstoret2R
 Type: Package
 Title: R Connection into NPSTORET for Water Quality (WQ) Processing
-Version: 0.0.0.9011
+Version: 0.0.0.9012
 Date: 2015-01-15
 Author: Bonnie Campbell, Assistant Data Manager, NPS Northern Colorado Plateau
     Network (NCPN)

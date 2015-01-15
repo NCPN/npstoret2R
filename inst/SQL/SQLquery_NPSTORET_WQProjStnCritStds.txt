@@ -1,5 +1,5 @@
 SELECT 
-	tblLocationStationGroups.ID_CODE AS 'PARK_ID', 
+  tblLocationStationGroups.ID_CODE AS 'PARK_ID', 
 	tblLocationStationGroups.NAME, 
 	tblLocationStationGroups.DESCRIPTION_TEXT AS 'PARK_DESCRIPTION_TEXT', 
 	wqs.Standard_IS_NUMBER, 
@@ -37,9 +37,9 @@ SELECT
 	wqsc.Coefficient8,
 	tblCharacteristics.LocCHDEF_IS_NUMBER, 
 	tblCharacteristics.LocCHDEF_ORG_ID,
-	tblDef_TSRUOM.UOM_TYPE, 
-	tblDef_TSRUOM.SHORT_FORM_NAME, 
-	tblDef_TSRUOM.DESCRIPTION_TEXT AS 'UOM_DESCRIPTION_TEXT',
+	tsr.UOM_TYPE, 
+	tsr.SHORT_FORM_NAME, 
+	tsr.DESCRIPTION_TEXT AS 'UOM_DESCRIPTION_TEXT',
 	wqsc.TSRCHAR_IS_NUMBER, 
  	wqsc.Standard_IS_NUMBER AS 'WQSC_Standard_IS_NUMBER'
 FROM ((
@@ -75,5 +75,5 @@ FROM ((
 				AND (tblCharacteristics.TSRCHAR_IS_NUMBER = wqsc.TSRCHAR_IS_NUMBER)) 
 				ON (wqs.Standard_Org_ID = wqsc.Standard_Org_ID) 
 				AND (wqs.Standard_IS_NUMBER = wqsc.Standard_IS_NUMBER))
-			INNER JOIN tblDef_TSRUOM 
-				ON wqsc.TSRUOM_IS_NUMBER = tblDef_TSRUOM.TSRUOM_IS_NUMBER;
+			INNER JOIN [;DATABASE=C:\NPSTORET\LinkTabs\NPSTORET_defTab.mdb].tblDef_TSRUOM AS tsr 
+				ON wqsc.TSRUOM_IS_NUMBER = tsr.TSRUOM_IS_NUMBER;

@@ -30,11 +30,12 @@ Ensure required packages are installed, if not install them
  \tabular{llllllll}{
    0.1   \tab \tab 2014-05-05 \tab \tab BLC  \tab \tab Initial version \cr
    0.2   \tab \tab 2014-06-26 \tab \tab BLC  \tab \tab Added cleanup \cr
+   0.3   \tab \tab 2015-01-15 \tab \tab BLC  \tab \tab Documentation update \cr
  }
 }
 \examples{
 # Test for the dplyr package and install it if necessary.
-pkgTest("dplyr")
+# pkgTest("dplyr")
 }
 \seealso{
 Other helper functions: \code{\link{as.is}};

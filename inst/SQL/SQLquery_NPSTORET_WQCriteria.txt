@@ -1,5 +1,5 @@
 SELECT DISTINCT 
-	tblWQStandardCriteria.StdChar_IS_NUMBER, 
+  tblWQStandardCriteria.StdChar_IS_NUMBER, 
 	tblWQStandardCriteria.StdChar_Org_ID, 
 	tblWQStandardCriteria.Standard_IS_NUMBER, 
 	tblWQStandardCriteria.Standard_Org_ID, 
@@ -31,8 +31,8 @@ SELECT DISTINCT
 	tblWQStandardCriteria.D_LAST_UPDATE_TS,
 
 IIF (tblWQStandardCriteria.TSRUOM_IS_NUMBER > 0, 
-(SELECT TRIM(tblDef_TSRUOM.SHORT_FORM_NAME) FROM tblDef_TSRUOM 
-WHERE tblDef_TSRUOM.TSRUOM_IS_NUMBER = tblWQStandardCriteria.TSRUOM_IS_NUMBER) 
+(SELECT TRIM(tsr.SHORT_FORM_NAME) FROM [;DATABASE=C:\NPSTORET\LinkTabs\NPSTORET_defTab.mdb].tblDef_TSRUOM AS tsr 
+WHERE tsr.TSRUOM_IS_NUMBER = tblWQStandardCriteria.TSRUOM_IS_NUMBER) 
 , '')
  AS UNITS
 
@@ -41,4 +41,3 @@ LEFT JOIN tblCharacteristics ON tblCharacteristics.MEDIUM = tblWQStandardCriteri
 AND tblCharacteristics.TSRCHAR_IS_NUMBER = tblWQStandardCriteria.TSRCHAR_IS_NUMBER
 AND tblCharacteristics.TSRUOM_IS_NUMBER = tblWQStandardCriteria.TSRUOM_IS_NUMBER
 AND tblCharacteristics.LocCHDEF_ORG_ID = tblWQStandardCriteria.StdChar_Org_ID
-

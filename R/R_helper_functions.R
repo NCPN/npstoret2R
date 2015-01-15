@@ -5,13 +5,12 @@
 #
 # Notes:      N/A
 #
-#             Place this file in the same directory as .Rhistory
-#
 # Sources:  See individual functions, B. Campbell, May 2014
 #
 # Revisions:  0.1  2014-05-05  BLC  initial version
 #             0.2  2014-06-25  BLC  added insertColumn, revised cleanup
 #             0.3  2014-06-27  BLC  renamed R_NCPN_helper_functions.R
+#             0.4  2015-01-15  BLC  documentation changes
 # ==========================================================
 
 # ----------------------------------------------------------------------
@@ -22,7 +21,7 @@
 #' 
 #' @examples
 #' # Test for the dplyr package and install it if necessary.
-#' pkgTest("dplyr")
+#' # pkgTest("dplyr")
 #'
 #' @section Sources:
 #'  \tabular{ll}{
@@ -36,6 +35,7 @@
 #'  \tabular{llllllll}{
 #'    0.1   \tab \tab 2014-05-05 \tab \tab BLC  \tab \tab Initial version \cr
 #'    0.2   \tab \tab 2014-06-26 \tab \tab BLC  \tab \tab Added cleanup \cr
+#'    0.3   \tab \tab 2015-01-15 \tab \tab BLC  \tab \tab Documentation update \cr
 #'  }
 #' @family helper functions
 #' @export

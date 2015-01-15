@@ -1,5 +1,5 @@
 SELECT DISTINCT 
-	tblOrganizations.Name AS OrgName, 
+  tblOrganizations.Name AS OrgName, 
 	tblVisits.LocStVst_IS_NUMBER, 
 	tblVisits.LocProj_IS_NUMBER, 
 	tblProjects.ProjectID, 
@@ -25,7 +25,7 @@ SELECT DISTINCT
 	tblActivities.QAQC_SAMPLE, 
 	tblCharacteristics.TSRCHAR_IS_NUMBER, 
 	tblCharacteristics.DISPLAY_NAME, 
-	tblDef_TSRUOM.SHORT_FORM_NAME AS UOM, 
+	tsr.SHORT_FORM_NAME AS UOM, 
 	tblCharacteristics.SMPL_FRAC_TYPE_NM, 
 	tblCharacteristics.FIELD_LAB, tblCharacteristics.MEDIUM, 
 	tblResults.DETECTION_CONDITION, 
@@ -58,10 +58,10 @@ FROM
 	INNER JOIN (((tblCharacteristics LEFT JOIN tblFieldProcedures 
 		ON (tblCharacteristics.LocFLDPR_IS_NUMBER = tblFieldProcedures.LocFLDPR_IS_NUMBER) 
 		AND (tblCharacteristics.LocFLDPR_ORG_ID = tblFieldProcedures.LocFLDPR_Org_ID)) 
-	LEFT JOIN tblDef_TSRUOM 
-		ON tblCharacteristics.TSRUOM_IS_NUMBER = tblDef_TSRUOM.TSRUOM_IS_NUMBER) 
-		INNER JOIN ((tblActivities INNER JOIN tblDef_ActivityTypes 
-			ON tblActivities.ACTIVITY_TYPE = tblDef_ActivityTypes.ACTYP_UID) 
+	LEFT JOIN [;DATABASE=C:\NPSTORET\LinkTabs\NPSTORET_defTab.mdb].tblDef_TSRUOM AS tsr 
+		ON tblCharacteristics.TSRUOM_IS_NUMBER = tsr.TSRUOM_IS_NUMBER) 
+		INNER JOIN ((tblActivities INNER JOIN [;DATABASE=C:\NPSTORET\LinkTabs\NPSTORET_defTab.mdb].tblDef_ActivityTypes AS act 
+			ON tblActivities.ACTIVITY_TYPE = act.ACTYP_UID) 
 		INNER JOIN tblResults 
 			ON (tblActivities.LocFdAct_ORG_ID = tblResults.LocFdAct_Org_ID) 
 			AND (tblActivities.LocFdAct_IS_NUMBER = tblResults.LocFdAct_IS_NUMBER)) 
