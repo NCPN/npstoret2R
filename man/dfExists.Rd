@@ -38,8 +38,10 @@ Object exists and is a data frame object
   }
 }
 \seealso{
-Other helper functions: \code{\link{as.is}};
-  \code{\link{cleanUp}}; \code{\link{convert.magic}};
+Other helper functions: \code{\link{addKey}};
+  \code{\link{as.is}}; \code{\link{cleanUp}};
+  \code{\link{convert.magic}};
+  \code{\link{convertToDataTable}};
   \code{\link{daysBetween}}; \code{\link{dfDatesBetween}};
   \code{\link{insert.column}}; \code{\link{is.not.null}};
   \code{\link{isDateBetween}};

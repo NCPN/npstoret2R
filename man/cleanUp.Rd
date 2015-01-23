@@ -63,11 +63,12 @@ For gc()
   }
 }
 \seealso{
-Other helper functions: \code{\link{as.is}};
-  \code{\link{convert.magic}}; \code{\link{daysBetween}};
-  \code{\link{dfDatesBetween}}; \code{\link{dfExists}};
-  \code{\link{insert.column}}; \code{\link{is.not.null}};
-  \code{\link{isDateBetween}};
+Other helper functions: \code{\link{addKey}};
+  \code{\link{as.is}}; \code{\link{convert.magic}};
+  \code{\link{convertToDataTable}};
+  \code{\link{daysBetween}}; \code{\link{dfDatesBetween}};
+  \code{\link{dfExists}}; \code{\link{insert.column}};
+  \code{\link{is.not.null}}; \code{\link{isDateBetween}};
   \code{\link{iterateDataLoad}}; \code{\link{mgsub}};
   \code{\link{pkgTest}}; \code{\link{readSQL}}
 }

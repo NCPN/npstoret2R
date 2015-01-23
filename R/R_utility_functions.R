@@ -1,7 +1,7 @@
 ############################################################
-# R Helper Functions
+# R Utility Functions
 ############################################################
-# Purpose:    Single file access to miscellaneous helper functions
+# Purpose:    Single file access to miscellaneous utility/helper functions
 #
 # Notes:      N/A
 #
@@ -11,6 +11,7 @@
 #             0.2  2014-06-25  BLC  added insertColumn, revised cleanup
 #             0.3  2014-06-27  BLC  renamed R_NCPN_helper_functions.R
 #             0.4  2015-01-15  BLC  documentation changes
+#             0.5  2015-01-22  BLC  renamed R_utility_functions.R
 # ==========================================================
 
 # ----------------------------------------------------------------------
@@ -603,4 +604,81 @@ mgsub <- function(pattern, replacement, x, ...) {
       result <- gsub(pattern[i], replacement[i], result, ...)
     }
     return(result)
+}
+
+# ----------------------------------------------------------------------
+#' @title addKey
+#' @description add a key to a data frame which is a concatenation of existing columns
+#'
+#' @param df          - data frame to add the key to
+#' @param cols        - columns to concatenate
+#' @param separator   - string for separating concatenated columns
+#' @param id_col_name - name of the newly created key column
+#'
+#' @return result - the original data frame with an additional key column
+#'
+#' @examples
+#' # create a concatenated key for comparisons
+#' # cols <- c("START_DATE","Park","StationID","SMPL_FRAC_TYPE_NM","MEDIUM")
+#' # addKey(dfResults, cols, "|", "uniqueID")
+#'
+#' @section Requirements:
+#'   plyr (version >= 1.8.1)
+#' @section Sources:
+#'   \tabular{ll}{
+#'   \tab Ananda Mahto, February 10, 2014 \cr
+#'   \tab \url{http://stackoverflow.com/questions/21682462/concatenate-columns-and-add-them-to-beginning-of-data-frame} \cr
+#'   }
+#' @section Adapted:
+#'   \tabular{llllllll}{
+#'   \tab 2015-01-22 \tab\tab B. Campbell \tab\tab 0.1 \tab\tab Initial version \cr
+#'   }
+#' @section Revisions:
+#'   \tabular{llllllll}{
+#'   \tab 0.1   \tab\tab 2015-01-22 \tab\tab BLC  \tab\tab Initial version \cr
+#'   }
+#' @family helper functions
+#' @export
+# ----------------------------------------------------------------------
+addKey<-function(df, cols, separator, id_col_name){
+  # concatenate the columns
+  df$ID = do.call(paste,c(df[cols], sep=separator))
+  # add the concatenated column
+  cbind(ID = do.call(paste,c(df[cols], sep=separator)),df)
+  # rename the ID column as desired
+  df <- rename(df,c("ID" = id_col_name))
+}
+
+# ----------------------------------------------------------------------
+#' @title convertToDataTable
+#' @description converts a dataframe to a data.table
+#'
+#' @param df          - data frame to add the key to
+#' @param key_col     - key columns
+#'
+#' @return result - the original data frame as a data.table
+#'
+#' @examples
+#' # convert data frame to data table & set key
+#' # cols <- c("START_DATE","Park","StationID","SMPL_FRAC_TYPE_NM","MEDIUM","FIELD_LAB")
+#' # convertToDataTable(dfResults, cols)
+#'
+#' @section Requirements:
+#'   data.table (version >= 1.9.4)
+#' @section Sources:
+#'   \tabular{llllllll}{
+#'   \tab 2015-01-22 \tab\tab B. Campbell \tab\tab 0.1 \tab\tab Initial version \cr
+#'   }
+#' @section Revisions:
+#'   \tabular{llllllll}{
+#'   \tab 0.1   \tab\tab 2015-01-22 \tab\tab BLC  \tab\tab Initial version \cr
+#'   }
+#' @family helper functions
+#' @export
+# ----------------------------------------------------------------------
+convertToDataTable<-function(df,key_col){
+  dt <- data.table(df)
+  if(is.not.null(key_col)){
+    setkeyv(dt,key_col)
+  }
 }

@@ -1,3 +1,15 @@
+npstoret2R 0.0.0.9013
+===================
+
+DEVELOPMENT INCREMENTAL RELEASE 13
+
+* Add addKey() & convertToDataTable() functions
+
+* Rename R_helper_functions to R_utility_functions and update documentation
+
+* Added data.table (>=1.9.4) and plyr (>=1.8.1) dependencies
+
+
 npstoret2R 0.0.0.9012
 ===================
 
