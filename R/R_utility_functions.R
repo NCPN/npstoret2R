@@ -682,3 +682,96 @@ convertToDataTable<-function(df,key_col){
     setkeyv(dt,key_col)
   }
 }
+
+# ----------------------------------------------------------------------
+#' @title         trim.leading
+#' @description   remove leading whitespace from string
+#'
+#' @param x - string to remove whitespace from
+#'
+#' @return result - x w/o leading whitespace (string)
+#'
+#' @examples
+#' # 
+#' # trim.leading(tResults$RESULT_DATA)
+#' # 
+#'
+#' @section Requirements:
+#'   N/A
+#' @section Sources:
+#'   \tabular{llllllll}{
+#'   \tab 2010-02-14 \tab\tab f3lix \tab\tab 0.1 \tab\tab Initial version \cr
+#'   \tab \url{http://stackoverflow.com/questions/2261079/how-to-trim-leading-and-trailing-whitespace-in-r} \cr
+#'   }
+#' @section Revisions:
+#'   \tabular{llllllll}{
+#'   \tab 0.1   \tab\tab 2015-03-24 \tab\tab BLC  \tab\tab Initial version \cr
+#'   }
+#' @family helper functions
+#' @export
+# ----------------------------------------------------------------------
+trim.leading <- function (x){
+  sub("^\\s+", "", x)
+}
+
+# ----------------------------------------------------------------------
+#' @title         trim.trailing
+#' @description   remove trailing whitespace from string
+#'
+#' @param x - string to remove whitespace from
+#'
+#' @return result - x w/o trailing whitespace (string)
+#'
+#' @examples
+#' # 
+#' # trim.leading(tResults$RESULT_DATA)
+#' # 
+#'
+#' @section Requirements:
+#'   N/A
+#' @section Sources:
+#'   \tabular{llllllll}{
+#'   \tab 2010-02-14 \tab\tab f3lix \tab\tab 0.1 \tab\tab Initial version \cr
+#'   \tab \url{http://stackoverflow.com/questions/2261079/how-to-trim-leading-and-trailing-whitespace-in-r} \cr
+#'   }
+#' @section Revisions:
+#'   \tabular{llllllll}{
+#'   \tab 0.1   \tab\tab 2015-03-24 \tab\tab BLC  \tab\tab Initial version \cr
+#'   }
+#' @family helper functions
+#' @export
+# ----------------------------------------------------------------------
+trim.trailing <- function (x){ 
+  sub("\\s+$", "", x)
+}
+
+# ----------------------------------------------------------------------
+#' @title         trim
+#' @description   remove leading and/or trailing whitespace from string
+#'
+#' @param x - string to remove whitespace from
+#'
+#' @return result - x w/o leading or trailing whitespace (string)
+#'
+#' @examples
+#' # 
+#' # trim(tResults$RESULT_DATA)
+#' # 
+#'
+#' @section Requirements:
+#'   N/A
+#' @section Sources:
+#'   \tabular{llllllll}{
+#'   \tab 2010-02-14 \tab\tab f3lix \tab\tab 0.1 \tab\tab Initial version \cr
+#'   \tab \url{http://stackoverflow.com/questions/2261079/how-to-trim-leading-and-trailing-whitespace-in-r} \cr
+#'   }
+#' @section Revisions:
+#'   \tabular{llllllll}{
+#'   \tab 0.1   \tab\tab 2015-03-24 \tab\tab BLC  \tab\tab Initial version \cr
+#'   }
+#' @family helper functions
+#' @export
+# ----------------------------------------------------------------------
+trim <- function (x){ 
+  gsub("^\\s+|\\s+$", "", x)
+}

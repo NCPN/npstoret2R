@@ -1,3 +1,13 @@
+npstoret2R 0.0.0.9014
+===================
+
+DEVELOPMENT INCREMENTAL RELEASE 14
+
+* Added trim(), trim.leading() & trim.trailing() functions
+
+* Updated documentation
+
+
 npstoret2R 0.0.0.9013
 ===================
 
