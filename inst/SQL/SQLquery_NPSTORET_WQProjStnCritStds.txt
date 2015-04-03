@@ -1,13 +1,13 @@
 SELECT 
-  tblLocationStationGroups.ID_CODE AS 'PARK_ID', 
+  tblLocationStationGroups.ID_CODE AS PARK_ID, 
 	tblLocationStationGroups.NAME, 
-	tblLocationStationGroups.DESCRIPTION_TEXT AS 'PARK_DESCRIPTION_TEXT', 
+	tblLocationStationGroups.DESCRIPTION_TEXT AS PARK_DESCRIPTION_TEXT, 
 	wqs.Standard_IS_NUMBER, 
 	wqs.Standard_Org_ID, 
 	wqs.OWNER_TYPE_CODE, 
 	wqs.StandardID, 
 	wqs.StandardName, 
-	wqs.DESCRIPTION_TEXT AS 'STD_DESCRIPTION_TEXT', 
+	wqs.DESCRIPTION_TEXT AS STD_DESCRIPTION_TEXT, 
 	wqs.COMP_IND_CD, 
 	wqs.D_USERID_CREATOR, 
 	wqs.D_USERID_CODE, 
@@ -39,9 +39,9 @@ SELECT
 	tblCharacteristics.LocCHDEF_ORG_ID,
 	tsr.UOM_TYPE, 
 	tsr.SHORT_FORM_NAME, 
-	tsr.DESCRIPTION_TEXT AS 'UOM_DESCRIPTION_TEXT',
+	tsr.DESCRIPTION_TEXT AS UOM_DESCRIPTION_TEXT,
 	wqsc.TSRCHAR_IS_NUMBER, 
- 	wqsc.Standard_IS_NUMBER AS 'WQSC_Standard_IS_NUMBER'
+ 	wqsc.Standard_IS_NUMBER AS WQSC_Standard_IS_NUMBER
 FROM ((
 	tblWQStandards AS wqs 
 		INNER JOIN (
